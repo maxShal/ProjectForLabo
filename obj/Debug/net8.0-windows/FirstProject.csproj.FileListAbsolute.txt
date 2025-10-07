@@ -12,3 +12,4 @@ C:\Users\Shalashov_ME\Documents\FirstProject\obj\Debug\net8.0-windows\refint\Fir
 C:\Users\Shalashov_ME\Documents\FirstProject\obj\Debug\net8.0-windows\FirstProject.pdb
 C:\Users\Shalashov_ME\Documents\FirstProject\obj\Debug\net8.0-windows\FirstProject.genruntimeconfig.cache
 C:\Users\Shalashov_ME\Documents\FirstProject\obj\Debug\net8.0-windows\ref\FirstProject.dll
+C:\Users\Shalashov_ME\Documents\FirstProject\obj\Debug\net8.0-windows\FirstProject.sourcelink.json
