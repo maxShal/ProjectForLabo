@@ -39,7 +39,7 @@ public partial class Form1 : Form
         V = new TextBox() { Location = new Point(20, 80), Width = 100, PlaceholderText = "Введите V" };
         this.Controls.Add(V);
 
-        txtResult = new TextBox() { Location = new Point(20, 140), Width = 150, ReadOnly = true, Text = "X2" };
+        txtResult = new TextBox() { Location = new Point(20, 140), Width = 150, ReadOnly = true, Text = "X1" };
         this.Controls.Add(txtResult);
 
 
@@ -54,7 +54,7 @@ public partial class Form1 : Form
         V_ = new TextBox() { Location = new Point(200, 80), Width = 100, PlaceholderText = "Введите V" };
         this.Controls.Add(V_);
 
-        txtResult_ = new TextBox() { Location = new Point(200, 140), Width = 150, ReadOnly = true, Text = "X2"};
+        txtResult_ = new TextBox() { Location = new Point(200, 140), Width = 150, ReadOnly = true, Text = "X2" };
         this.Controls.Add(txtResult_);
 
 
@@ -65,9 +65,10 @@ public partial class Form1 : Form
 
         resPrint = new TextBox() { Location = new Point(20, 160), Width = 150, ReadOnly = true, Text = "Результат" };
         this.Controls.Add(resPrint);
-        
+
         discPrint = new TextBox() { Location = new Point(200, 160), Width = 150, ReadOnly = true, Text = "Расхождение" };
         this.Controls.Add(discPrint);
+        
         
     }
 
@@ -79,18 +80,19 @@ public partial class Form1 : Form
         double X1 = (m2v-m1v)*100/Vv;
         double X2 = (m2v_-m1v_)*100/Vv_;
 
-        txtResult.Text = X1.ToString("F3");
-        txtResult_.Text = X2.ToString("F3");
+        txtResult.Text ="X1 = " + X1.ToString("F3");
+        txtResult_.Text = "X2 = " + X2.ToString("F3");
 
         double disc = Math.Abs(X1 - X2);
         double res = (X1 + X2) / 2;
 
-        discPrint.Text = disc.ToString("F3");
-        resPrint.Text = res.ToString("F3");
+        discPrint.Text = "Расхождение = " + disc.ToString("F3");
+        resPrint.Text ="Результат = " + res.ToString("F3");
 
         if (disc > 0.05)
         {
-            MessageBox.Show("Слишко бльшое расхождение");
+            MessageBox.Show("Слишко бльшое расхождение.\n"+
+            "Расхождение не должно привышать 0,05");
             return;
         }
 
@@ -106,13 +108,15 @@ public partial class Form1 : Form
 
         if (!double.TryParse(t1.Text, out m1) || m1 <= 0)
         {
-            MessageBox.Show("Некорректные данные для m1");
+            MessageBox.Show("Некорректные данные для m1 \n" +
+            "Значение должно быть больше 0, дробные числа вводятся через запятую.");
             return false;
         }
 
         if (!double.TryParse(t2.Text, out m2) || m2 <= 0)
         {
-            MessageBox.Show("Некорректные данные для m2");
+            MessageBox.Show("Некорректные данные для m2 \n" +
+            "Значение должно быть больше 0, дробные числа вводятся через запятую.");
             return false;
         }
 
@@ -124,7 +128,8 @@ public partial class Form1 : Form
 
         if (!double.TryParse(t3.Text, out V) || V <= 0)
         {
-            MessageBox.Show("Некорректные данные для V");
+            MessageBox.Show("Некорректные данные для V \n" +
+            "Значение должно быть больше 0, дробные числа вводятся через запятую.");
             return false;
         }
 
@@ -146,6 +151,6 @@ public partial class Form1 : Form
 
         File.AppendAllText(filePath, sb.ToString());
 
-        MessageBox.Show("Данные сохранены");
+        MessageBox.Show("Данные сохранены в файл result.txt");
     }
 }
